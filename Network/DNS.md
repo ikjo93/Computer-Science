@@ -1,31 +1,23 @@
 ### 1. DNS의 개념
 + 전화를 걸 때 상대방의 핸드폰 번호를 알아야 하듯 컴퓨터 역시 상대방의 주소(IP)를 알아야 접속할 수 있다.
 + DNS가 없을 당시 Stanford Research Institute라는 단체가 전 세계에 있는 호스츠 파일을 관리했는데 어떤 웹 서버를 운영하는 사람이 이 기관에 자신의 IP 주소를 특정 도메인으로 등록해달라고 요청하고 다른 사람 역시 이 기관에 있는 호스츠 파일을 다운로드 받아야 그 도메인으로 해당 IP 주소에 해당하는 웹 사이트에 접속할 수 있었다.
-+ 아울러 사용자가 **모든 IP 주소를 기억하기 어렵고 또 이는 변경될 수도 있어** IP 주소만을 통해서 수많은 컴퓨터들과 통신하기에는 무리가 있다. 이를 보완하고자 나온 것이 DNS(Domain Name System)이다.
++ 아울러 사용자가 **모든 IP 주소를 기억하기 어렵고 또 이는 변경될 수도 있어** IP 주소만을 통해서 수많은 컴퓨터들과 통신하기에는 무리가 있다. 이러한 문제를 개선하고자 나온 것이 DNS(Domain Name System)이다.
 + DNS는 인터넷의 도메인 체계로서 상대방의 이름과 핸드폰 번호를 연결하여 저장하는 주소록이 있듯이 사람들이 알아보기 쉬운 텍스트와 IP 주소를 연결하여 저장한다.
   + 메타포: IP(전화번호) vs DNS(전화번호부)
-+ IP 주소가 아닌 도메인(Domain)을 통해서 사용자가 서버에 접속하게 한다면 도메인은 고정하고 IP 주소를 변경함으로써 더욱 유연하게 서버를 운영할 수 있다.
-  + DDNS, Dynamic DNS, 실시간으로 DNS를 갱신하는 방식
++ IP 주소가 아닌 도메인(Domain)을 통해서 사용자가 서버에 접속하게 한다면 **도메인은 고정하고 IP 주소를 변경함으로써 더욱 유연하게 서버를 운영**할 수 있다.
+  + DDNS(Dynamic DNS) : 실시간으로 DNS(IP와 도메인 관계)를 갱신하는 방식
 + 도메인은 연간 1만원 ~ 10만원 정도를 국제기구에 납부하거나 freenon.com 등 웹 사이트의 서비스를 이용하면 1년간 무료로 이용할 수 있다.
 
 <br/>
 
-### 2. 웹에서의 DNS 원리
-+ 사용자가 웹 브라우저에 특정 도메인을 입력하면 우선적으로 호스츠 파일을 찾는다.
-+ 해당하는 IP 주소가 없다면 웹 브라우저는 웹 서버와 바로 통신하는 것이 아니라 DNS 서버를 먼저 거치는데, 이는 **사용자의 컴퓨터가 인터넷에 연결될 때는 DHCP를 통해서 DNS 서버의 IP 주소가 자동으로 할당**되기 때문이다.
-+ 클라이언트는 DNS 서버에 접속해서 해당 도메인에 해당하는 IP 주소를 요청하고 DNS 서버가 저장하고 있는 IP 주소를 클라이언트에 응답해준다.
-+ 클라이언트는 DNS 서버로부터 받은 IP 주소를 통해 웹 서버에 접속한다.
-
-<br/>
-
-### 3. Public DNS
+### 2. Public DNS
 + 사용자 컴퓨터가 인터넷에 연결되는 순간 통신사(ISP)로부터 자동으로 DNS 서버 IP 주소를 할당받는다.
 + 따라서 통신사는 사용자가 어느 웹 사이트에 접속하려고 하는지 파악할 수 있으며 이 정보를 통해 마케팅, 판매 등에 활용할 수 있다. 
 + 이때 사용자는 자동으로 할당받는 것 외의 DNS 서버를 이용할 수 있는데 이를 **Public DNS 서버**라고 한다. 대표적인 예로 Cisco OpenDNS, Google Public DNS 등이 있다.
 
 <br/>
 
-### 4. 도메인(Domain)
+### 3. 도메인(Domain)
 > 
 > 도메인(또는 도메인 네임)은 **URL(URL, Uniform Resource Locator)의 일종**으로 우리가 접속하고자 하는 사이트의 IP 주소(예: 240.10.20.1)를 쉽게 찾아갈 수 있도록 만든 주소(예: `www.naver.com`)이다.
 > 
@@ -68,7 +60,7 @@
 
 <br/>
 
-### 5. 도메인 이름의 등록 과정과 원리
+### 4. 도메인 이름의 등록 과정과 원리
 > 
 > #### DNS 최상위 기관 ICANN(비영리 단체)
 > > + ICANN가 하는 일은 루트 네임 서버(Root name server)를 관리한다. 이 루트 네임 서버의 주소는 a.root-servers.net ~ m.root-servers.net로 총 13대의 컴퓨터가 있다.
@@ -86,8 +78,10 @@
 
 <br/>
 
-### 6. 클라이언트의 도메인 계층별 DNS 서버 접속 순서(if, 웹 사이트)
+### 5. 클라이언트의 도메인 계층별 DNS 서버 접속 순서(if, 웹 사이트)
 + 클라이언트가 웹 브라우저에 도메인 입력
++ 우선적으로 호스츠 파일을 찾고 해당하는 IP 주소가 없다면 웹 브라우저는 웹 서버와 바로 통신하는 것이 아니라 DNS 서버를 먼저 거친다.
+  + **사용자의 컴퓨터가 인터넷에 연결될 때는 DHCP를 통해서 DNS 서버의 IP 주소가 자동으로 할당**되기 때문이다.
 + 클라이언트는 Public DNS 등 최초 DNS 서버에 해당 도메인에 대한 웹 서버의 IP 주소를 요청
 + 최초 DNS 서버가 Root name server에 도메인 IP 주소 요청
   + Public DNS 등 모든 도메인 서버는 반드시 루트 네임 서버의 주소를 기본적으로 알고 있다. 그게 안 되면 통신이 안 되기 때문이다.
@@ -108,7 +102,7 @@ DNS 서버는 도메인에 대한 IP 주소를 알기 위해 루트 네임 서�
 
 <br/>
 
-### 7. nslookup : 명령프롬프트창을 통해 특정 도메인에 해당하는 IP 주소 알아내는 방법
+### 6. nslookup : 명령프롬프트창을 통해 특정 도메인에 해당하는 IP 주소 알아내는 방법
 > 
 > #### DNS 서버를 통해 IP 주소 얻어내기
 > + 명령 프롬프트창에 `nslookup 도메인 이름` 입력(또는 `nslookup –type=a 도메인 이름`)
@@ -127,17 +121,57 @@ DNS 서버는 도메인에 대한 IP 주소를 알기 위해 루트 네임 서�
 > 
 > + 이때 도메인에 해당하는 IP 주소를 저장하고 있는 Authoritative Name Server의 주소는 a. iana.servers.net 과 b.iana.servers.net로 하나가 죽더라도 나머지가 동작하도록 2개의 서버가 운영되고 있다.
 >
-> #### DNS 서버를 거치지 않고 Authoritative name server를 통해 도메인에 해당하는 IP 주소 얻어내기
+> #### DNS 서버를 거치지 않고 Authoritative Name Server를 통해 도메인에 해당하는 IP 주소 얻어내기
 > + 명령 프롬프트창에 `nslookup example.com a.iana-servers.net` 입력
 > 
 > ![image](https://user-images.githubusercontent.com/82401504/146795569-1a398428-04a7-409d-810a-0e4a97298ae0.png)
 > 
-> + 처음에 나오는 서버와 Address는 Authoritative name server에 대한 내용이며, 아래 이름과 Address는 Authoritative name server로부터 응답받은 해당 도메인에 대한 내용이다.
+> + 처음에 나오는 서버와 Address는 Authoritative Name Server에 대한 내용이며, 아래 이름과 Address는 Authoritative Name Server로부터 응답받은 해당 도메인에 대한 내용이다.
 > + 이때 DNS 서버를 거치지 않고 해당 IP에 대한 권한이 있는 Authoritative name server로부터 응답을 받았기 때문에 '권한 없는 응답' 문구가 없어진 것을 볼 수 있다.
 
 <br/>
 
-### 8. 호스츠(hosts) 파일 : DNS를 사용하지 않는 방법
+### 7. DNS record
++ 도메인 네임 서버가 하는 역할 중 가장 중요한 것은 **특정 도메인 네임에 대한 정보를 저장**하는데 그 정보 한 건 한 건을 DNS 레코드라고 한다.
++ 예시 : 클라이언트가 입력한 도메인이 dns4u.ga이고, 원하는 IP 주소가 52.231.13.22라고 가정했을 때
+> + ga NS a.ns.ga : Root Name Server가 ga.(Top-Level Domain)에 대해 **NS(Name Server) 형식의** DNS 레코드로 a.ns.ga를 저장함
+>   + 여기서 a.ns.ga는 그 하위 Top-Level Domain Name Server의 주소일 것이다.
+> + dns4u.ga NS ns01.freenom.com : Top-Level Domain Name Server는 dns4u.ga.에 대한 **NS(Name Server) 형식의** DNS 레코드로 ns01.freenom.com를 저장함
+>   + 여기서 ns01.freenom.com는 그 하위 Authoritative Name Server의 주소일 것이다.
+> + dns4u.ga A 52.231.13.22 : Authoritative Name Server는 도메인 네임 dns4u.ga.에 대한 **A(IP Address) 형식의** DNS 레코드로 52.231.13.22.를 저장함
+>   + 여기서 52.231.13.22.는 클라이언트가 원하는 IP 주소이다.
+`※ 참고 : A, NS, AAAA`
++ A는 IPv4 Address를 의미한다.
++ NS는 클라이언트가 원하는 도메인에 대한 단서(IP 주소, 탑-레벨 도메인 등)를 가지고 있는 네임 서버의 도메인을 의미한다.
+  + 또한 해당 도메인에 대한 처리를 다른 도메인(직속 하위 도메인) 네임 서버에게 위임하는 것을 의미하기도 한다.
++ AAAA는 IPv6 Address를 의미한다.
+
+<br/>
+
+### 8. CNAME
+> + 특정 도메인에 대한 또 다른 도메인(별명)을 정하는 형식
+> 
+> ![image](https://user-images.githubusercontent.com/82401504/146801404-d3704ea6-d27e-4d46-8ea6-1fe454b8f84f.png)
+> 
+> #### example.com. A 192.0.1.1
+> + 클라이언트가 example.com으로 접속하면 A 레코드에 의해서 IP 주소 192.0.1.1 웹 사이트가 열린다.
+> #### `www.example.com` CNAME example.com.
+> + example.com. 에 대한 별명을 `www.example.com.`로 정하는 것으로 클라이언트가 `www.example.com`으로 접속하면 CNAME 레코드에 의해서 example.com. 도메인으로 연결되고 이 도메인은 A 레코드에 의해서 IP 주소 192.0.1.1 로 연결되어 웹 사이트가 열린다.
+>
+> #### CNAME 의 효능 : 유지보수 용이
+> + 특정 IP 주소에 연결된 도메인이 여러 개일 경우 만약 해당 IP 주소가 변경된다면 이 IP 주소에 연결된 모든 도메인에 대해서 일일이 수정을 해야 하는 번거로움이 발생하지만 하나의 도메인에 대해서만 해당 IP 주소에 연결하고 CNAME을 사용하여 그 하나의 도메인에 대한 별명으로 여러 개의 도메인을 만든다면 하나의 도메인에 대해서만 IP 주소를 수정할 수 있다.
+> 
+> ![KakaoTalk_20211221_015913051](https://user-images.githubusercontent.com/82401504/146804477-e8431e5e-cb24-4ddb-9e2e-7541e1aa38ea.jpg)
+
+<br/>
+
+### 9. Github pages 에 도메인 연결하기
+> + Github 에게 클라이언트가 자신의 웹 사이트에 접근하기 위한 도메인 dns4u.ga 를 알려줄 것
+> + DNS 서버에게 클라이언트가 dns4u.ga 도메인 입력 시 Github 에서 공개한 자체 웹 서버의 IP 주소  192.30.252.153 에 접속하도록 설정 할 것
+
+<br/>
+
+### 10. 호스츠(hosts) 파일 : DNS를 사용하지 않는 방법
 > 
 > #### 호스츠 파일의 개념
 > > + 모든 운영체제에는 호스츠(hosts)라는 파일이 있는데 예를 들어 그 파일에 example.com의 IP 주소는 93.184.216.34라고 적어 놓으면 웹 브라우저에 example.com을 입력하면 해당 IP 주소를 식별하여 IP 주소가 93.184.216.34인 컴퓨터로 접속할 수 있게 된다.
