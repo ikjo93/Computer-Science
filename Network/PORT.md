@@ -10,7 +10,7 @@
   - 443 : HTTPS
 - 만일 웹 서버를 1개를 운영한다면 기본적으로 웹 서버는 80 포트에 연결되도록 약속되어 있다.
 - 만일 웹 서버를 하나의 컴퓨터에 2개를 운영한하면 기존에 1개가 포트 80에 연결되어있으므로 포트 80에 연결은 불가능므로 다른 포트(ex. 8800, 8080 등)에 연결해야한다.
-- 포트의 URL 표현방법 : scheme://<user>:<password>@<host>:<port>
+- 포트의 URL 표현방법 : scheme://user:password@host:port
   - scheme : 통신규약(gopher, telnet, ftp, http, usenet 등)
   - host : IP 주소 또는 Domain Name
   - post : 포트 번호
