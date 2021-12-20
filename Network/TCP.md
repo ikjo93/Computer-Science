@@ -1,4 +1,5 @@
-### 1. IP의 문제점 개선 : TCP(Transmission Control Protocol, 전송 제어 프로토콜)
+### 1. TCP(Transmission Control Protocol, 전송 제어 프로토콜) : IP의 문제점 개선
+- 출발지 PORT, 목적지 PORT, 전송제어, 순서, 검증 정보 등을 포함
 - 연결 지향 : TCP 3 way handshake(가상 연결, 실제 연결 X)
   - 클라이언트 -> 서버 : SYN(접속 요청)
   - 서버 -> 클라이언트 : SYN(접속 요청) + ACK(요청 수락)
