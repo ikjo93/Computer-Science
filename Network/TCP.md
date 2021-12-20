@@ -1,5 +1,5 @@
 ### 1. TCP(Transmission Control Protocol, 전송 제어 프로토콜) : IP의 문제점 개선
-- 출발지 PORT, 목적지 PORT, 전송제어, 순서, 검증 정보 등을 포함
+- **출발지 PORT, 목적지 PORT, 전송제어, 순서, 검증 정보** 등을 포함
 - 연결 지향 : **TCP 3 way handshake(가상 연결, 실제 연결 X)** -> 패킷을 받을 대상이 있고 정상적인 상태일 때야 비로소 패킷 전송
   - 클라이언트 -> 서버 : SYN(접속 요청)
   - 서버 -> 클라이언트 : SYN(접속 요청) + ACK(요청 수락)
@@ -17,24 +17,25 @@
 ### 2. TCP/IP 스택(Stack)의 4 계층(Layer)
 - `애플리케이션 계층` -> `전송 계층` -> `인터넷 계층` -> `네트워크 인터페이스(접근) 계층` 순으로 데이터 전송이 이루어진다.
 - 애플리케이션 계층
-  - 프로토콜: HTTP, FTP, SMTP, SOCKET, etc...
+  - 프로토콜: HTTP, FTP, SMTP, etc...
+  - 애플리케이션 계층에서 생성된 전송 데이터가 SOCKET 라이브러리를 통해 전송 계층으로 전달됨
 - 전송 계층
   - 프로토콜: TCP, UDP
 - 인터넷 계층
   - 프로토콜: IP
 - 네트워크 인터페이스 계층
-  - 프로토콜: MAC Address, LAN DRIVER, LAN Card, Ethernet cable, wire, etc...
+  - 프로토콜: MAC Address, LAN DRIVER, NIC(Network Interface Card, 보통 '랜카드'라고 불림), Ethernet cable, wire, etc...
 - 예시
-  - 애플리케이션이 Hello, world! 메시지 데이터를 생성하고 이를 SOCKET 라이브러리를 통해 데이터를 전송한다.
-  - TCP 정보를 생성하고 이를 포함하여 데이터를 전송한다.
-  - IP 패킷을 생성하고 이를 포함하여 데이터를 전송한다.
-  - LAN Card를 통해 인터넷으로 데이터를 전송한다. 이때 이더넷 프레임(Ethernet frame)을 포함시킨다.
+  - 애플리케이션이 Hello, world! 메시지 데이터를 생성하고 이를 SOCKET 라이브러리를 통해 데이터를 전송 계층으로 전달한다.
+  - TCP 정보를 생성하고 이를 포함하여 데이터를 인터넷 계층으로 전달한다.
+  - IP 패킷을 생성하고 이를 포함하여 데이터를 네트워크 인터페이스 계층으로 전달한다.
+  - LIC를 통해 인터넷으로 데이터를 전송한다. 이때 이더넷 프레임(Ethernet frame)을 포함시킨다.
 ```
 ※ 참고 : SOCKET
 - 웹 브라우저, 게임, 채팅 프로그램 등의 프로세스들은 소켓(SOCKET) 라이브러리를 창구로 사용하여 데이터를 주고 받는다.
 - 소켓은 IP 주소와 포트(PORT) 번호로 정의되며 TCP(Transmission Control Protocol) 또는 UDP(User Datagram Protocol)를 사용할 수 있다.
 - HTTP : 클라이언트의 요청이 있을 때만 서버가 응답하여 해당 정보를 전송하고 곧바로 연결을 종료(웹 서버는 기본적으로 듣고 있다가(Listening) 클라이언트의 요청이 들어오면 응답하는 특성을 갖는다.)
-- SOCKET : 클라이언트와 서버가 특정 포트를 통해 실시간 및 양방향으로 통신
+- SOCKET : 클라이언트와 서버가 특정 포트를 통해 실시간으로 통신
 ```
 
 <br/>
