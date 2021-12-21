@@ -2,7 +2,7 @@
 + 모든 웹 브라우저(클라이언트 프로그램)와 웹 서버(서버 프로그램)는 웹 상에서 일종의 규약을 지키면서 서로 요청과 응답을 주고 받는데 이 규약을 HTTP라고 한다.
 + 즉, HTTP는 HyperText Transfer Protocol(번역: 초 본문 전송 규약)의 약자로 웹 상에서 웹 브라우저와 웹 서버간 리소스(HTML 문서, 이미지, 동영상 등)를 주고받을 수 있는 일종의 규약이다.
 + HTTP를 통해 데이터를 주고 받을 때는 HTTP 요청(또는 응답) 메시지를 생성하여 이를 주고 받게 된다.
-  + HTML, TEXT, IMAGE, 음성, 영상, 파일, JSON(API), XML(API) 등 거의 모든 형태의 데이터를 전송할 수 있으며 서버간에 데이터를 주고 받을 때도 대부분 HTTP를 사용한다.
+  + **HTML, TEXT, IMAGE, 음성, 영상, 파일, JSON(API), XML(API) 등** 거의 모든 형태의 데이터를 전송할 수 있으며 서버간에 데이터를 주고 받을 때도 대부분 HTTP를 사용한다.
 + HTTPS(HyperText Transfer Protocol over Secure Socket Layer)는 보안이 강화된 웹 통신 프로토콜로 통신의 인증과 암호화를 위해 Netscape Communications가 개발했다.
 ```
 URL 상 http(s)://가 있다는 것은 웹 브라우저가 웹 서버에게 리소스를 요청하는 것을 의미한다.
