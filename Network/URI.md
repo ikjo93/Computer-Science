@@ -55,6 +55,7 @@
 > + html 내부 북마크 등에 사용
 > + 서버에 전송하는 정보 아님
 > ```
+> ※ 참고 : fragment도 URL에 포함되는가?
 > fragment는 일반적으로 URL에 포함시켜 사용되어져 왔으나,
 > URL scheme은 RFC 1738에서 http://<host>:<port>/<path>?<searchpart>로 정의되어 있으며,
 > RFC 1808, 2.1. URL Syntactic Components 에서는 #fragment 부분이 URL이 아니라고 명시되어있다.
